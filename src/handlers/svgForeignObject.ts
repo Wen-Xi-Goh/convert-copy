@@ -31,6 +31,15 @@ class svgForeignObjectHandler implements FormatHandler {
     this.ready = true;
   }
 
+  static htmlToXML (html: string) {
+    const dummy = document.createElement("div");
+    dummy.innerHTML = html;
+    const serializer = new XMLSerializer();
+    const xml = serializer.serializeToString(dummy);
+    dummy.remove();
+    return xml;
+  }
+
   async doConvert (
     inputFiles: FileData[],
     inputFormat: FileFormat,
@@ -50,9 +59,9 @@ class svgForeignObjectHandler implements FormatHandler {
       const html = decoder.decode(bytes);
       const svg = (
 `<svg width="1920" height="1080" xmlns="http://www.w3.org/2000/svg">
-  <foreignObject x="0" y="0" width="1920" height="1080">
-    <div xmlns="http://www.w3.org/1999/xhtml">${html}</div>
-  </foreignObject>
+<foreignObject x="0" y="0" width="1920" height="1080">
+${svgForeignObjectHandler.htmlToXML(html)}
+</foreignObject>
 </svg>`);
       const outputBytes = encoder.encode(svg);
       outputFiles.push({ name, bytes: outputBytes });
