@@ -11,6 +11,7 @@ export const Category = {
     ARCHIVE: "archive",
     SPREADSHEET: "spreadsheet",
     PRESENTATION: "presentation"
+    CODE: "code"
 }
 
 /**
@@ -115,7 +116,7 @@ const CommonFormats = {
         "py",
         "py",
         "text/x-python",
-        [Category.TEXT, Category.IMAGE]
+        Category.CODE
     ),
     SH: new FormatDefinition(
         "Shell Script",
