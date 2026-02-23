@@ -95,7 +95,7 @@ try { handlers.push(new espeakngHandler()) } catch (_) { };
 try { handlers.push(new textToShellHandler()) } catch (_) { };
 try { handlers.push(new batchHandler()) } catch (_) { };
 try { handlers.push(new bsorHandler()) } catch (_) { };
-try { handlers.push(new TxtToPyHandler()) } catch (_) { };
+try { handlers.push(new txtToPyHandler()) } catch (_) { };
 try { handlers.push(new fontHandler()) } catch (_) { };
 try { handlers.push(new bsonHandler()) } catch (_) { };
 try { handlers.push(new asepriteHandler()) } catch (_) { };
